@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: APIFiddle Sample Definition
+  description: Example workspace
+  version: 0.0.0
+paths:
+  /inventoryforecast:
+    get:
+      operationId: getInventoryForecastData
+      summary: get Inventory forecast data
+      responses:
+        "200":
+          description: The request was successful, and the server has returned the
+            requested resource in the response body.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                required:
+                  - data
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "403":
+          description: The server understood the request, but refuses to authorize it.
+            Ensure the client has appropriate permissions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+components:
+  responses:
+    BadRequest:
+      description: The server could not understand the request due to invalid syntax.
+        The client should modify the request and try again.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                  required:
+                    - message
+            required:
+              - message
