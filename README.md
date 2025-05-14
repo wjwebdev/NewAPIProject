@@ -1,2 +1,2 @@
 # NewAPIProject
-Creating a new API to forecast Inventory 
+Creating a new API to forecast Inventory for my new company.
